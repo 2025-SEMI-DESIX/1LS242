@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla App</title>
+  <style>
+    /* Agrega tus estilos aquí */
+  </style>
+</head>
+<body>
+  <h1>Plantilla App</h1>
+  <!-- Agrega tus elementos HTML aquí -->
+  <!-- Ejemplo: -->
+  <!-- <div id="salida"></div> -->
+
+  <script>
+    (() => {
+      const App = {
+        htmlElements: {
+          // Obtén referencias a tus elementos HTML aquí
+          // Ejemplo:
+          // salida: document.querySelector('#salida'),
+        },
+        init() {
+          // Inicializa la lógica de tu aplicación aquí
+          // Llama a métodos desde App.methods
+          // Ejemplo:
+          // App.methods.hacerAlgo();
+        },
+        methods: {
+          // Define los métodos de tu aplicación aquí
+          // Ejemplo:
+          // hacerAlgo() {
+          //   const elemento = App.htmlElements.salida;
+          //   elemento.textContent = '¡Hola desde App!';
+          // },
+          // imprimir(elemento, texto) {
+          //   elemento.innerHTML += `<p>${texto}</p>`;
+          // }
+        },
+      };
+
+      // Inicializa la App
+      App.init();
+    })();
+  </script>
+</body>
+</html>
