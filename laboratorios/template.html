@@ -54,7 +54,7 @@
           salida: document.querySelector('#salida'),
         },
         init() {
-          this.htmlElements.salida.textContent = '¡Hola desde App!';
+          App.htmlElements.salida.textContent = '¡Hola desde App!';
         },
       };
       App.init();
@@ -70,10 +70,10 @@
           salida: document.querySelector('#salida'),
         },
         init() {
-          this.htmlElements.entrada.addEventListener('input', this.imprimir);
+          App.htmlElements.entrada.addEventListener('input', App.imprimir);
         },
         imprimir(evento) {
-          this.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
+          App.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
         },
       };
       App.init();
@@ -89,11 +89,11 @@
           salida: document.querySelector('#salida'),
         },
         init() {
-          this.htmlElements.formulario.addEventListener('submit', this.imprimir);
+          App.htmlElements.formulario.addEventListener('submit', App.imprimir);
         },
         imprimir(evento) {
           evento.preventDefault();
-          this.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
+          App.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
         },
       };
       App.init();
