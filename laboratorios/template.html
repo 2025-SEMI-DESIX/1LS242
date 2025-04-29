@@ -45,5 +45,59 @@
       App.init();
     })();
   </script>
+  <script>
+    // Ejemplo #1
+    // En este ejemplo se muestra cómo se puede imprimir un texto en un div.
+    (() => {
+      const App = {
+        htmlElements: {
+          salida: document.querySelector('#salida'),
+        },
+        init() {
+          this.htmlElements.salida.textContent = '¡Hola desde App!';
+        },
+      };
+      App.init();
+    })();
+  </script>
+  <script>
+    // Ejemplo #2
+    // En este ejemplo se muestra cómo se puede imprimir el valor de un input en un div.
+    (() => {
+      const App = {
+        htmlElements: {
+          entrada: document.querySelector('#entrada'),
+          salida: document.querySelector('#salida'),
+        },
+        init() {
+          this.htmlElements.entrada.addEventListener('input', this.imprimir);
+        },
+        imprimir(evento) {
+          this.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
+        },
+      };
+      App.init();
+    })();
+  </script>
+  <script>
+    // Ejemplo #3
+    // En este ejemplo se muestra cómo se puede leer el valor de un input después de que el usuario haga submit en un formulario.
+    (() => {
+      const App = {
+        htmlElements: {
+          formulario: document.querySelector('#formulario'),
+          salida: document.querySelector('#salida'),
+        },
+        init() {
+          this.htmlElements.formulario.addEventListener('submit', this.imprimir);
+        },
+        imprimir(evento) {
+          evento.preventDefault();
+          this.htmlElements.salida.innerHTML += `<p>${evento.target.value}</p>`;
+        },
+      };
+      App.init();
+    })();
+  </script>
 </body>
 </html>

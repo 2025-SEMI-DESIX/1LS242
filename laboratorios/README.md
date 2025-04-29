@@ -6,17 +6,17 @@ En esta sección se encuentran las soluciones a todos los laboratorios de la asi
 
 La plantilla base para todos los laboratorios. En esta plantilla se encuentra el patrón de diseño basado en módulos, que se utilizará en todos los laboratorios, además de dos ejemplos de funciones y métodos, mostrando la estructura general del patrón de diseño basado en módulos.
 
-- [index.html](./template.html)
+- [Plantilla](./template.html)
 
 ## Laboratorio 1
 
-- [index.html](./lab1/index.html)
+- [Solución](./lab1/index.html)
 
 ## Laboratorio 2
 
-- [index.html](./lab2/index.html)
+- [Solución](./lab2/index.html)
 
 ## Laboratorio 3
 
-- [index.html](./lab3/index.html)
+- [Solución](./lab3/index.html)
 
