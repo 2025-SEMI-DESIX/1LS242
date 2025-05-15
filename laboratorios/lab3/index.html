@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio #3</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Laboratorio #3</h1>
+  <section>
+    <form id="form1">
+      <label for="">Número</label>
+      <input type="number" id="input1">
+      <button id="calc1">Calcular</button>
+      <span id="resp1"></span>
+    </form>
+    <form id="form2">
+      <label for="">Cadena</label>
+      <input type="text" id="input2">
+      <button id="calc2">Calcular</button>
+      <span id="resp2"></span>
+    </form>
+  </section>
+  <script>
+    (() => {
+      const App = {
+        htmlElements: {
+          resp1: document.querySelector('#resp1'),
+          form1: document.querySelector('#form1'),
+          resp2: document.querySelector('#resp2'),
+          form2: document.querySelector('#form2'),
+        },
+        init() {
+          App.htmlElements.form1.addEventListener('submit', App.methods.resp1);
+          App.htmlElements.form2.addEventListener('submit', App.methods.resp2);
+        },
+        methods: {
+          resp1(e) {
+            e.preventDefault();
+            const value = e.target.elements.input1.value;
+            const { resp1 } = App.htmlElements;
+            const isDecimalPalindrome = App.methods.isPalindrome(value);
+            const binary = Number(value).toString(2);
+            const isBinaryPalindrome = App.methods.isPalindrome(binary);
+            App.methods.print(resp1, `¿Es palíndromo de doble base?:  ${isBinaryPalindrome && isDecimalPalindrome}`);
+          },
+          resp2(e) {
+            e.preventDefault();
+            const { resp2 } = App.htmlElements;
+            const value = e.target.elements.input2.value;
+            const resp = {};
+            value.split('').forEach(c => {
+              resp[c] = resp[c] ? resp[c] + 1 : 1;
+            })
+            App.methods.print(resp2, JSON.stringify(resp));
+          },
+          isPalindrome(val) {
+            return val === val.split('').reverse().join('');
+          },
+          print(e, text) {
+            e.innerHTML = `<p>${text}</p>`;
+          }
+        },
+      };
+
+      // Inicializa la App
+      App.init();
+    })();
+  </script>
+</body>
+</html>
