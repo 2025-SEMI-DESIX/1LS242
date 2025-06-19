@@ -14,13 +14,13 @@
       },
       renderProducts: ({ data, count }) => {
         htmlElements.table.innerHTML = data.map((product) => `
-                    <tr>
-                        <td>${product.id}</td>
-                        <td>${product.category.id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                    </tr>
-                `).join("");
+            <tr>
+                <td>${product.id}</td>
+                <td>${product.category.id}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+            </tr>
+        `).join("");
       }
     }
 

@@ -9,11 +9,13 @@ const db = {
 };
 
 const generateId = () => {
+    // Big O(1)
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
 const ProductModel = {
     create: ({ name, price, categoryId }) => {
+        // Big O(1)
         const product = {
             id: generateId(),
             name,
@@ -24,15 +26,8 @@ const ProductModel = {
         return product;
     },
     findAll: () => {
-        return db.products.map((product) => {
-            const category = CategoryModel.findById(product.categoryId);
-            return {
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                category: category,
-            };
-        });
+        // Big O(n^2)
+        return db.products.map((product) => ProductModel.findById(product.id));
     },
     findById: (id) => {
         const product = db.products.find((product) => product.id === id);
@@ -51,6 +46,7 @@ const ProductModel = {
 
 const CategoryModel = {
     create: ({ name }) => {
+        // Big O(1)
         const category = {
             id: generateId(),
             name,
@@ -59,9 +55,11 @@ const CategoryModel = {
         return category;
     },
     findAll: () => {
+        // Big O(n)
         return db.categories;
     },
     findById: (id) => {
+        // Big O(n)
         return db.categories.find((category) => category.id === id);
     },
 };
@@ -96,14 +94,12 @@ fastify.get("/api/v1/products", (req, res) => {
 });
 
 fastify.get("/api/v1/products/:id", (req, res) => {
-    const product = ProductModel.findById(req.params.id);
-    return product;
+    return ProductModel.findById(req.params.id);
 });
 
 fastify.post("/api/v1/products", (req, res) => {
     const { name, price, categoryId } = req.body;
-    const product = ProductModel.create({ name, price, categoryId });
-    return product;
+    return ProductModel.create({ name, price, categoryId });
 });
 
 const start = async () => {
