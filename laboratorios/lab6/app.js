@@ -25,6 +25,15 @@ const ProductModel = {
         db.products.push(product);
         return product;
     },
+    delete: (id) => {
+        // Big O(n)
+        const product = db.products.find((product) => product.id === id);
+        if (!product) {
+            return null;
+        }
+        db.products = db.products.filter((product) => product.id !== id);
+        return product;
+    },
     findAll: () => {
         // Big O(n^2)
         return db.products.map((product) => ProductModel.findById(product.id));
@@ -60,7 +69,11 @@ const CategoryModel = {
     },
     findById: (id) => {
         // Big O(n)
-        return db.categories.find((category) => category.id === id);
+        const category = db.categories.find((category) => category.id === id);
+        if (!category) {
+            return null;
+        }
+        return category;
     },
 };
 
@@ -70,6 +83,7 @@ CategoryModel.create({ name: "Category 3" });
 ProductModel.create({ name: "Product 1", price: 100, categoryId: db.categories[0].id });
 ProductModel.create({ name: "Product 2", price: 200, categoryId: db.categories[1].id });
 ProductModel.create({ name: "Product 3", price: 300, categoryId: db.categories[2].id });
+ProductModel.create({ name: "Product 4", price: 400, categoryId: null });
 
 const fastify = Fastify({
     logger: true,
@@ -77,6 +91,7 @@ const fastify = Fastify({
 
 fastify.register(cors, {
     origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
 fastify.get("/api/v1/categories", (req, res) => {
@@ -100,6 +115,10 @@ fastify.get("/api/v1/products/:id", (req, res) => {
 fastify.post("/api/v1/products", (req, res) => {
     const { name, price, categoryId } = req.body;
     return ProductModel.create({ name, price, categoryId });
+});
+
+fastify.delete("/api/v1/products/:id", (req, res) => {
+    return ProductModel.delete(req.params.id);
 });
 
 const start = async () => {

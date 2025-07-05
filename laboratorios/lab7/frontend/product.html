@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="product.js" defer></script>
+</head>
+<body>
+    <main>
+        <section class="card">
+            <div class="card-content">
+                <a href="./index.html">Volver</a>
+                <h1>Producto <span id="product-id"></span></h1>
+                <h2>Este es el producto que tenemos en la base de datos</h2>
+                <form>
+                    <input type="text" name="id" placeholder="Id" name="id">
+                    <input type="text" name="name" placeholder="Nombre">
+                    <input type="text" name="price" placeholder="Precio">
+                    <select name="categoryId" id="categoryId">
+                        <option value="">Selecciona una categoría</option>
+                    </select>
+                    <button type="submit">Editar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
